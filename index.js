@@ -133,9 +133,19 @@ console.log(countCourses(students[1]));
       ]
     **********/
 function listAllCourses(students) {
-  // Your code here
+  let uniqueCourses = [];
+  students.forEach((student) => {
+    let courses = student.courses;
+    courses.forEach((course) => {
+      if (!uniqueCourses.includes(course)) {
+        uniqueCourses.push(course);
+      }
+    });
+  });
+
+  return uniqueCourses;
 }
-// console.log(listAllCourses(students));
+console.log(listAllCourses(students));
 
 /**********
     Question 6:
@@ -204,7 +214,22 @@ console.log(findStudentById(10, students));
     **********/
 
 function getStudentsByCourse(course, students) {
-  // Your code here
+  let studentInCourses = students.filter((student) => {
+    if (student.courses.includes(course)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return studentInCourses;
+
+  //   let studentInCourse = [];
+  //   students.forEach((student) => {
+  //     if (student.courses.includes(course)) {
+  //       studentInCourse.push(student);
+  //     }
+  //   });
+  //   return studentInCourse
 }
 
-// console.log(getStudentsByCourse("Music",students));
+console.log(getStudentsByCourse("Music", students));
